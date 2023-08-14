@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'logo.svg' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>BitMask Technology</title>
+</head>
+<body>
+
+    <nav>
+            <div class="container" id="nav-wrapper">
+            <h1 id="logo"><img src="{% static 'logo.svg'%}" alt="" >BitMask</h1>
+
+            <ul>
+                <li><a href="/" class="linksNav">Home</a></li>
+                <li><a href="/#services" class="linksNav">Services</a></li>
+                <li><a href="/blog" class="linksNav">Blogs</a></li>
+                <li><a href="" class="linksNav">Learning</a></li>
+                <li><a href="/#contact" class="linksNav">Contact</a></li>
+            </ul>
+
+            <div class="icon-switch" id="icon-switch">
+                <i class="fas fa-bars" onclick="handleToggle()"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="homeSection">
+
+        <div class="container">
+            <h1>BitMask Technology.</h1>
+            <p>Firmware & Software Development, Troubleshooting, Prototype Development, PCB design, Web applications and IoT applications.</p>
+            <a href="#contact">Learn More</a>
+        </div>
+
+    </section>
+
+    <section id="services">
+        <div class="container" id="what">
+            <div class="text-what">
+                <h1>What We Offer?</h1>
+                <p style="color: #8994A6;">Our services include consulting on product improvement/design of Embedded Systems and Software etc.</p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h1>Firmware Development</h1>
+                    <p>BitMask offers you the perfect blend of firmware development  expertise to ensure product success</p>
+                </div>
+
+                <div class="col">
+                    <h1>IoT Solutions</h1>
+                    <p>We develop secure IoT web to help you connect and manage devices.</p>
+                </div>
+
+                <div class="col">
+                    <h1>Web Applications</h1>
+                    <p>We also develop web applications using various technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="quote">
+        <p>At BitMask, we believe that the best innovation is yet to come. BitMask thrives to combine creativity, imagination, and science to create technology for the future. Join us in our mission in creating a better future for the next generation.</p>
+    </div>
+
+    <section>
+        <div class="container" id="what">
+            <div class="text-whatb">
+                <h1 style="font-size: 1.5rem;margin:0 0 1.5rem 0;">Read our articles to get clear picture about how we work.</h1> 
+                <!-- <p style="color: #8994A6;">Read our articles to get clear picture about how we work.</p>  <br><br> -->
+            </div>
+
+            <div class="row">
+                
+            {% for blog in blogs %}
+                <div class="col-sm">
+                    <div class="wrapper">
+    		
+                        <div class="card radius shadowDepth1">
+                            <div class="card__image border-tlr-radius">
+                                <img src="/media/{{blog.img}}" alt="image" class="border-tlr-radius">
+                            </div>
+            
+                            <div class="card__content card__padding">
+                                
+                                <article class="card__article">
+                                    <h2><a href="#">{{blog.title}}</a></h2>
+            
+                                    <p>{{blog.description|truncatechars:60}}...<a href="/blog/{{blog.pk}}/" class="read-more">Read More</a></p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+
+                <h2 class="text-center p-4">Get in touch with us.</h2>
+
+                <div class="col-md">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="uname" placeholder="Your Name" required id="yname"/>
+                        <input type="text" name="umail" placeholder="Your Email" required id="yemail"/>
+                        <input type="text" name="upno" placeholder="Your Mobile No" required id="yemail"/>
+                        <textarea placeholder="Your Message"  name="umsg" required id="ymsg"></textarea>
+                        <input type="submit" value="SUBMIT" id="submit"/>
+                        <p id="text-center" style="cursor: pointer;text-align: center;"></p>
+                    </form>
+                </div>
+
+                <div class="col-md">
+                    <div class="ring">
+                        <h2>Give us a ring.</h2>
+                        <p>+91 8123046833</p>
+                    </div>
+
+                    <div class="visit">
+                        <h2>Visit us.</h2>
+                        <p>Vidhya Nagar Angol, Belgaum 
+                            Karnataka, 590006</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>Develped and Maintained by BitMask Tech</p>
+
+        <div class="socials">
+            <a href="https://www.linkedin.com/company/bitmask-technology/about/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/bitmaskTech/"><i class="fa-brands fa-facebook" target="_blank"></i></a>
+        </div>
+    </footer>
+    
+    <script>
+        let hamburger1 = document.querySelector('i')
+        let ul = document.querySelector('ul')
+
+        const handleToggle = () => {
+            if (ul.style.display=='block'){
+                ul.style.display='none'
+            }else{
+                ul.style.display='block'
+            }
+        }
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if($(window).scrollTop() > 600 && $(window).scrollTop() < 2500){
+                    document.getElementById('logo').style.color = "#2980b9";  
+                    document.getElementById('icon-switch').style.color = "#2980b9";
+                    var z = document.getElementsByClassName('linksNav')
+                    for(let i = 0; i< z.length; i++){
+                        z[i].style.color = '#2980b9'
+                    }
+                }else{
+                    document.getElementById('logo').style.color = "#fff"; 
+                    document.getElementById('icon-switch').style.color = "#fff";
+                    var z = document.getElementsByClassName('linksNav')
+                    for(let i = 0; i< z.length; i++){
+                        z[i].style.color = '#2980b9'
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>        
